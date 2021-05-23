@@ -40,7 +40,7 @@ jobs:
         pip install pytest
         export PYTHONPATH=src
         pytest
-    -name: Deploy on heroku 
+    -name: Deploy on heroku
       run: |
         git remote add heroku https://heroku:$heroku_api_key@git.heroku.com/secure-sands-53489.git
         git push heroku HEAD:master -f
