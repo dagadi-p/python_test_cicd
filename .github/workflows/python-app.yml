@@ -18,6 +18,9 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
+        heroku_app_name: ${{HEROKU_APP_NAME}} #Must be unique in Heroku
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -38,10 +41,7 @@ jobs:
         pip install pytest
         export PYTHONPATH=src
         pytest
-    -name: Deploy on heroku
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
-          heroku_app_name: ${{HEROKU_APP_NAME}} #Must be unique in Heroku
+    -name: Deploy on heroku 
       if: github.ref == 'refs/head/master' &&job.status == 'sucess'
       run: |
         git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
