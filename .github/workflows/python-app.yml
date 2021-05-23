@@ -19,7 +19,7 @@ jobs:
       with:
         fetch-depth: 0
         heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
-        heroku_app_name: "secure-sands-53489" #Must be unique in Heroku
+        heroku_app_name: "secure-sands-53489"
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -40,3 +40,7 @@ jobs:
         pip install pytest
         export PYTHONPATH=src
         pytest
+    -name: Deploy on heroku 
+      run: |
+        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/secure-sands-53489.git
+        git push heroku HEAD:master -f
