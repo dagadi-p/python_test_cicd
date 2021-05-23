@@ -42,4 +42,5 @@ jobs:
         pytest
     - name: Deploy on heroku
       run:
+        heroku git:remote -a secure-sands-53489
         git push heroku main
