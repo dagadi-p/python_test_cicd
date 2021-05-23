@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name:
         heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
         heroku_app_name: "secure-sands-53489"
     - name: Set up Python 3.9
@@ -42,5 +43,4 @@ jobs:
         pytest
     - name: Deploy on heroku
       run:
-        git remote add heroku https://heroku:$heroku_api_key@git.heroku.com/secure-sands-53489.git
-        git push heroku HEAD:master
+        git push heroku main
