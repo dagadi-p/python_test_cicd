@@ -19,7 +19,7 @@ jobs:
       with:
         fetch-depth: 0
         heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
-        heroku_app_name: ${{HEROKU_APP_NAME}} #Must be unique in Heroku
+        heroku_app_name: "secure-sands-53489" #Must be unique in Heroku
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
